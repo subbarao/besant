@@ -33,6 +33,6 @@ end
 
 
 #before 'deploy:update_code', 'db:backup'
-#after 'deploy:update_code', 'dragonfly:symlink'
+after 'deploy:update_code', 'dragonfly:symlink'
 #require 'config/boot'
-#require 'hoptoad_notifier/capistrano'
+require 'hoptoad_notifier/capistrano'

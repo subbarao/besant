@@ -32,13 +32,13 @@ class ApplicationManifest < Moonshine::Manifest::Rails
     # package 'some_native_package', :ensure => :installed
 
     minutely = "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile tweets:minutely RAILS_ENV=#{ENV['RAILS_ENV']}"
-    cron 'tweet:run', :command => minutely, :user => configuration[:user], :minute => "*/20", :hour => 0
+    cron 'minutely_task', :command => minutely, :user => configuration[:user], :minute => "*/20", :hour => 0
 
     hourly = "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile tweets:hourly RAILS_ENV=#{ENV['RAILS_ENV']}"
-    cron 'tweet:run', :command => minutely, :user => configuration[:user], :minute => 0, :hour => "*/3"
+    cron 'hourly_task', :command => hourly, :user => configuration[:user], :minute => 0, :hour => "*/3"
 
     daily = "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile tweets:daily RAILS_ENV=#{ENV['RAILS_ENV']}"
-    cron 'tweet:run', :command => daily, :user => configuration[:user], :minute => 0, :hour => "*/24"
+    cron 'daily_task', :command => daily, :user => configuration[:user], :minute => 0, :hour => "*/24"
 
     # %w( root rails ).each do |user|
     #   mailalias user, :recipient => 'you@domain.com', :notify => exec('newaliases')
