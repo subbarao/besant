@@ -1,0 +1,63 @@
+<%= form_for(@movie,:html => {:multipart => true}) do |f| %>
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:
+      </h2>
+      <ul>
+        <% @movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cover_image %><br />
+    <%= f.file_field :cover_image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :released_on %><br />
+    <%= f.date_select :released_on %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cast %><br />
+    <%= f.text_field :cast %>
+  </div>
+
+  <div class="field">
+    <%= f.label :director %><br />
+    <%= f.text_field :director %>
+  </div>
+
+  <div class="field">
+    <%= f.label :producer %><br />
+    <%= f.text_field :producer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :banner %><br />
+    <%= f.text_field :banner %>
+  </div>
+
+  <div class="field">
+    <%= f.label :music_director %><br />
+    <%= f.text_field :music_director %>
+  </div>
+
+  <div class="field">
+    <%= f.label :plot %><br />
+    <%= f.text_area :plot %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  <%= "Review Umpire" %> 
+<% end %>
+
+<% content_for :description do %>
+  <%= "Aggregates reviews of telugu movies." %> 
+<% end %>
+
+<% content_for :keywords do %>
+  <%= "telugu movie reviews, telugu movie tweets" %> 
+<% end %>
+
+<div id="carousel">				
+  <ul> 
+    <% Movie.spotlight.to_ary.each do | movie | %>
+      <li>
+        <%= link_to image_tag(movie.cover_image.thumb("240x160").url, :width => 240, :height => 160), 
+          movie, :rel  => dom_id(movie, :tweet) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="spotlight">
+  <% Movie.spotlight.to_ary.each_with_index do | movie, index | %>
+    <%= div_for(movie, :tweet, :class => "#{index.nonzero? ? 'inactive' : ''}") do %>
+      <div class="movie-score">
+        <h3><%= movie.name %></h3>
+        <div class="percentage">
+          <%= image_tag movie.last_computed_score.to_i > 50 ? "hit-front.png" : "flop-front.png" %>
+          <%= movie.last_computed_score %>
+        </div>
+        <%= link_to "Based on #{movie.tweets.assesed.count} reviews ...", movie %>
+      </div>
+      <%= render movie.tweets.spotlight.limit(8) %>
+    <% end %>
+  <% end %>
+</div>

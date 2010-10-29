@@ -1,0 +1,457 @@
+body
+{
+  margin: 0px;
+  padding:0px;
+  color: #555555;
+  background: url("/images/body.jpg") no-repeat scroll 50% 0 #ABDEBE;
+}
+
+.bubble{
+  background: url("/images/bubble.png") top left no-repeat;
+  float:left;
+  width: 300px;
+  height: 220px;
+  margin: 2px;
+  position:relative;
+}
+
+.bubble:hover {
+  cursor: pointer;
+}
+
+.bubble .avatar{
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+}
+
+.bubble .speech{
+  font-size:15px;
+  font-family: "Hoefler Text",Constantia,Cambria,Georgia,serif;
+  margin: 36px 20px 10px 36px;
+}
+
+.bubble .mood{
+  float: left;
+  margin: 20px 0px 0px 20px;
+}
+
+img{
+  border: 0px;
+}
+
+div.header {
+  height: 58px;
+  float: left;
+  z-index:20;
+}
+
+div.header, div.footer {
+  margin:0 auto;
+  position:relative;
+  width: 950px;
+}
+
+#search{
+  float: right;
+  width: 450px;
+  margin-top: 20px;
+}
+
+#search_box {
+  -moz-border-radius:4px 4px 4px 4px;
+  bottom:0;
+  position:absolute;
+  right:0;
+}
+
+#search_box img{
+  display:block;
+  position:absolute;
+  right:4px;
+  top: 7px;
+}
+
+input#jq-primarySearch {
+  -moz-border-radius:10px 10px 10px 10px;
+  background:none repeat scroll 0 0 #FFFFFF;
+  border:1px solid #AAAAAA;
+  color:#333333;
+  height:20px;
+  line-height:1;
+  margin-bottom: 20px;
+  padding:2px 5px;
+  width:286px;
+}
+
+.poster {
+  float: left;
+  padding-left: 20px;
+  margin-top: 10px;
+  width: 310px;
+  height: 225px;
+}
+
+#container{
+  background: none repeat scroll 0 0 #FFFFFF;
+  margin: 0 auto;
+  width:960px;
+}
+
+#inner{
+  background: none repeat scroll 0 0 #FFFFFF;
+  margin-top: 10px;
+  float: left;
+  width:960px;
+}
+
+#mainbar{
+  float: right;
+  width: 588px;
+}
+
+#sidebar{
+  float: left;
+  width: 240px;
+  line-height: 2;
+  font-size: 17px;
+}
+
+#sidebar ul{
+  list-style: none;
+}
+
+.tweets
+{
+  margin-left: 15px;
+  width: 100%;
+  background-color: white;
+}
+
+
+.movie{
+  width: 800px;
+  margin-bottom: 10px;
+}
+
+.movie .info{
+  float: right;
+  width: 500px;
+}
+
+.poster{
+  float: left;
+}
+
+.poster img{
+  height:225px;
+  width:300px;
+}
+
+.red{
+  background-color: red;
+  border-color: red;
+}
+
+.yellow{
+  background-color: yellow;
+  border-color: yellow;
+}
+
+.green{
+  background-color: green;
+  border-color: green;
+}
+
+.score .summary{
+  font-size: 50px;
+  padding-top: 10px;
+  display: block;
+}
+.score .total{
+  display: block;
+  font-size: 12px;
+}
+
+
+.menu{
+  float: right;
+  margin-top: 80px;
+  width: 150px;
+}
+
+.subtabs {
+  float: left;
+  margin-left: 500px;
+  margin-bottom: 20px;
+  font-weight:bold;
+  width:100%;
+}
+
+a {
+  color:#0077CC;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+#footer{
+  background: none repeat scroll 0 0 #000000;
+  clear: both;
+  padding-top:30px;
+  height: 50px;
+  text-align: center;
+}
+
+.rating{
+  clear:left;
+  float:left;
+  position:relative;
+  text-align:center;
+  width:48px;
+}
+
+.expression{
+  background-repeat:no-repeat;
+  height:41px;
+  margin-left: -8px;
+  margin-top: -10px;
+  width:43px;
+  display:block; 
+}
+
+.negative{
+  background: url("/images/hate.png");
+}
+
+.positive{
+  background: url("/images/love.png");
+}
+
+.mixed{
+  background: url("/images/neutral.png");
+}
+
+.admin-link {
+  background-color:#E0EAF1;
+  border-bottom:1px solid #3E6D8E;
+  border-right:1px solid #7F9FB6;
+  color:#3E6D8E;
+  font-size:90%;
+  line-height:2.4;
+  margin:2px 2px 2px 0;
+  padding:3px 4px;
+  text-decoration:none;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+.actions{
+  position:relative;
+  left:-10px;
+  top:-10px;
+  z-index: 999;
+  display: hide;
+}
+
+.secondary-tweet{
+  padding: 10px;
+}
+
+#items-content ul{
+  list-style: none;
+}
+
+.inactive{
+  display: none;
+}
+
+#featured-items{
+  background-color: #a7e5a7;
+  padding: 10px;
+  float:left;
+  margin:10px;
+  overflow:hidden;
+  width: 604px;
+}
+
+#featured-top{
+  height: 31px;
+  margin: 0px;
+}
+
+#featured-bottom{
+  height: 40px;
+  margin: 0px;
+}
+
+#item-content{
+  height: 300px;
+}
+#featured-middle{
+  background-image: url(/images/middle.png); 
+  height: 500px;
+}
+
+.spotlight{
+  padding: 5px;
+}
+
+.tweet_movie ul{
+  padding-left: 15px;
+  overflow: hidden;
+}
+
+.tweet_avatar{
+  float: left;
+  margin: 0 5px 0 5px;
+}
+
+.tweet_text{
+  font-size: 17px;
+  color: #333333;
+}
+
+.tweet_movie li{
+  clear: both;
+  padding: 5px;
+  padding-right: 15px;
+}
+
+#sidebar li{
+  clear: both;
+  padding: 9px 0;
+}
+
+#sidebar li a{
+  padding: 0 10px;
+  color: #333333;
+}
+
+a.more{
+  float: right;
+  font-size: 17px;
+  color: black;
+}
+
+
+.product_score {
+  width:42px;
+  height:42px;
+  text-align: center;
+  display:inline;
+  float:left;
+}
+
+.movie_score {
+  font-size:14px;
+  height:17px;
+  line-height:17px;
+  padding:0;
+  width:24px;
+}
+
+.clearfix{
+  clear: both;
+}
+
+.movie-info {
+  height: 260px;
+  padding-top: 35px;
+  float: right;
+  width: 600px;
+}
+
+.movie-meta {
+  margin-top: 5px;
+  float: left;
+  line-height: 1.5;
+  width: 300px;
+  font-size: 15px;
+}
+
+.movie-meta .title{
+  border-bottom: 1px solid black;
+  padding: 5px 0px;
+  margin-bottom: 5px;
+}
+
+.movie-score h3, .movie-meta .title h3{
+  margin: 0px 0px;
+  text-transform: uppercase;
+}
+
+.tweet_movie h3{ 
+  margin: 0px 50px;
+  margin-top: 10px;
+}
+
+.movie-score .percentage{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.movie-meta .credits{
+  font-size: 13px;
+}
+
+.movie-meta .credits .label{
+  font-weight: bold;
+}
+
+.movie-score{
+  float: left;
+  text-align: center;
+  margin: 0 auto;
+  width: 270px;
+}
+
+.movie-score p{
+  font-size: 14px;
+  margin: 0px;
+}
+
+.movie-score .percentage{
+  font-size: 50px;
+}
+
+.movie-meta .label{
+  font-style: bold;
+}
+
+.movie-score {
+  padding-left: 20px;
+}
+.spotlight .movie-score{
+  padding-right: 20px;
+  margin-top: 22px;
+}
+
+.roundabout-holder {
+  list-style: none;
+  width: 60em;
+  height: 10em;
+  margin: 1em auto;
+}
+
+.roundabout-moveable-item {
+  height: 10em;
+  width: 15em;
+  cursor: pointer;
+}
+
+.roundabout-moveable-item img {
+  height: 10em;
+  width: 15em;
+}
+
+.roundabout-in-focus {
+  cursor: auto;
+}
+
+.large-text{
+  width: 400px;
+}
+
+.small-text{
+  width: 130px;
+}

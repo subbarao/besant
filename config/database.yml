@@ -1,0 +1,15 @@
+development:
+  adapter: mysql
+  database: t2review
+  username: root
+  password: gr#sc0r#
+test:
+  adapter: mysql
+  database: t_test
+  username: root
+  password: gr#sc0r#
+production:
+  adapter: mysql
+  database: review
+  username: root
+  password: 

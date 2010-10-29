@@ -1,0 +1,10 @@
+<div class="tweets clearfix">
+  <div class="parent">
+    <%= render tweets %>
+  </div>
+</div>
+<% if tweets.next_page %>
+  <div id="next" class="clearfix">
+    <%= link_to "Next Page", url_for(params.slice(:id,:action,:controller).merge(:page => tweets.next_page)) %> 
+  </div>
+<% end %>

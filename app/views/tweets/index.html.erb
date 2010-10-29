@@ -1,0 +1,19 @@
+<h1>Listing keywords</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>From </th>
+    <th>Text</th>
+  </tr>
+
+  <% @tweets.each do |tweet| %>
+    <tr>
+      <td>
+        <%= check_box_tag "tweet[]",tweet.id %>
+      </td>
+      <td><%= tweet.from_user %></td>
+      <td><%= tweet.text %></td>
+    </tr>
+  <% end %>
+</table>

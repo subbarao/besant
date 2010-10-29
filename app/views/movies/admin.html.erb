@@ -1,0 +1,70 @@
+<table border="1" class="edit-tweets">
+  <tr>
+    <th class="small-text"><%= sort_link @search, :created_on_twitter %></th>
+    <th class="small-text"><%= sort_link @search, :from_user %></th>
+    <th class="large-text"><%= sort_link @search, :text %></th>
+    <th class="small-text">Category</th>
+    <th class="small-text">Featured</th>
+    <th class="small-text">Destroy</th>
+  </tr>
+  <%= form_for @search, :url => url_for(params.slice(:action,:controller,:id)) do |f| %>
+    <tr>
+      <td></td>
+      <td class="small-text"><%= f.text_field :from_user_contains, :size => 15 %></td>
+      <td><%= f.text_field :text_contains %></td>
+      <td class="small-text"></td>
+      <td class="small-text"><input type="checkbox" id="feature_all"></td>
+      <td class="small-text"><input type="checkbox" id="destroy_all"></td>
+    </tr>
+    <tr>
+      <td colspan="6"><%= f.submit %></td>
+    </tr>
+  <% end %>
+
+  <%= form_for(@movie,:html => {:multipart => true}) do |f| %>
+    <% if @movie.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:
+        </h2>
+        <ul>
+          <% @movie.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.fields_for :tweets,@tweets do | tweet | %>
+      <tr>
+        <td class="small-text">
+          <%= tweet.object.created_on_twitter %>
+        </td>
+        <td class="small-text">
+          <%= tweet.object.from_user %>
+        </td>
+        <td class="large-text"><%= auto_link tweet.object.text, :urls, :target => :_blank %></td>
+        <td class="small-text">
+          <% %w(positive negative mixed fresh irrelevant).each do | cat | %>
+            <%= tweet.radio_button :category, cat %>
+            <%= f.label :category, cat.camelize %>
+            <br/>
+          <% end %>
+        </td>
+        <td class="small-text">
+          <%= tweet.check_box :featured, {}, true,false %>
+          <%= f.label :featured %>
+        </td>
+        <td class="small-text">
+          <%= tweet.check_box :_destroy %>
+          Delete: 
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="6">
+        <%= f.submit %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,23 @@
+<h1>Editing movie</h1>
+
+<%= render 'form' %>
+
+<% @movie.keywords.each do | keyword | %>
+    <%= link_to keyword.name, keyword,  :confirm => 'Are you sure?', 
+                                        :method => :delete, :class =>"tweet-link" %>
+<% end %>
+
+<%= form_for([@movie, @movie.keywords.new]) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @movie, :class => 'tweet-link' %>  |
+<%= link_to 'Search Twitter', sync_movie_path(@movie), :class => 'tweet-link' %> |
+<%= link_to 'Back', movies_path, :class => 'tweet-link' %>  |

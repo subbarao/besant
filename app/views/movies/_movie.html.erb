@@ -1,0 +1,36 @@
+<div class="movie-info">
+  <div class="movie-info-inner">
+    <div class="movie-meta">
+      <div class="title">
+        <h3><%= movie.name %></h3>
+      </div>
+      <div class="credits">
+        <span class="label">Starring: </span>
+        <span class="content"><%= movie.cast %></span>
+      </div>
+      <div class="credits">
+        <span class="label">Directed: </span>
+        <span class="content"><%= movie.director %></span>
+      </div>
+      <div class="credits">
+        <span class="label">Produced: </span>
+        <span class="content"><%= movie.producer %></span>
+      </div>
+      <div class="credits">
+        <span class="label">Released: </span>
+        <span class="content"><%= movie.released_on.strftime("%d %B, %Y.") %></span>
+      </div>
+    </div>
+    <div class="movie-score">
+      <div class="percentage">
+        <%= image_tag movie.last_computed_score.to_i > 50 ? "hit.png" : "flop.png" %>
+        <%= movie.last_computed_score %>
+      </div>
+      <p>
+        <%= movie.tweets.positive.count %> positive |
+        <%= movie.tweets.negative.count %> negative |
+        <%= movie.tweets.mixed.count %> mixed 
+      </p>
+    </div>
+  </div>
+</div>

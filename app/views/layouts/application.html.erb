@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="google-site-verification" content="RXjWilEYk0eC_6ulYSV_AaFVSQe8nHI6Zw4_W9dVR5I" />
+    <title>
+      <%= content_for :title %>
+    </title>
+    <meta name="description" content="<%= content_for :description %>" />
+    <meta name="keywords" content="<%= content_for :keywords %>" />
+    <%= stylesheet_link_tag :defaults, :cache => true %>
+    <%= javascript_include_tag :defaults, :cache => true %>
+  </head>
+
+  <body>
+
+
+    <div id="container">
+      <div class="header">
+        <%= link_to image_tag("logo.png"), "/" %>
+        <div id="search">
+          <div id="search_box">
+            <input type="text" id="jq-primarySearch" name="search" title="Search jQuery" accesskey="f" value="">
+            <%= image_tag "search_icon.png" %>
+          </div>
+        </div>
+      </div>
+
+      <div id="inner">
+        <%= yield %>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-18537025-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+</script>
+   </body>
+ </html>
