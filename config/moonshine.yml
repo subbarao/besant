@@ -9,7 +9,7 @@
 
 # Name of your application. Should be something with only alphanumerics, hypens
 # and underscores.
-:application: besantroad
+:application: reviewumpire
 
 # Deploy user
 :user: rails
@@ -18,7 +18,7 @@
 #:time_zone: UTC
 
 # Directory where application is deployed to
-:deploy_to: /var/www/railsapps/besantroad
+:deploy_to: /var/www/railsapps/reviewumpire
 
 # Primary domain application will be accessed as 
 :domain: reviewumpire.com
@@ -32,7 +32,7 @@
 # If you change this value, you will need to run: cap vcs:install
 #:scm: git
 # Reposistory URI for checking out code at deploy time
-:repository: git@github.com:subbarao/besantroad.git
+:repository: git@github.com:subbarao/besant.git
 
 # Use :app_symlinks to setup directories under public/ that you want to persist
 # across deployments. They'll be symlinked to the shared directory.
