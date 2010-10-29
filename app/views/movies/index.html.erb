@@ -27,8 +27,8 @@
       <div class="movie-score">
         <h3><%= movie.name %></h3>
         <div class="percentage">
-          <%= image_tag movie.last_computed_score.to_i > 50 ? "hit-front.png" : "flop-front.png" %>
-          <%= movie.last_computed_score %>
+          <%= image_tag movie.computed_score.to_i > 50 ? "hit-front.png" : "flop-front.png" %>
+          <%= movie.formatted_score %>
         </div>
         <%= link_to "Based on #{movie.tweets.assesed.count} reviews ...", movie %>
       </div>

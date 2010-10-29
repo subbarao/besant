@@ -2,8 +2,6 @@ class Movie < ActiveRecord::Base
 
   image_accessor :cover_image
 
-  attr_accessor :cached_score
-
   validates :name, :presence => true, :uniqueness => true
 
   validates :cast, :presence => true
@@ -28,10 +26,8 @@ class Movie < ActiveRecord::Base
 
   accepts_nested_attributes_for :tweets, :allow_destroy => true
 
-  before_save :update_score
-
-  def update_score
-    self.last_computed_score = "#{computed_score}%" rescue "N/A"
+  def formatted_score
+    "#{computed_score}%" rescue "N/A"
   end
 
   def computed_score

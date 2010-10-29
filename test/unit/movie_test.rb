@@ -50,7 +50,7 @@ class MovieTest < ActiveSupport::TestCase
     end
 
     should "have zero as last computed score" do
-      assert_equal "0%", @movie.last_computed_score
+      assert_equal "N/A", @movie.formatted_score
     end
 
     should "update computed score whenevery tweet is added" do
@@ -59,7 +59,7 @@ class MovieTest < ActiveSupport::TestCase
 
       tweet1.positive!
       assert_equal 100, @movie.computed_score
-      assert_equal "100%", @movie.reload.last_computed_score
+      assert_equal "100%", @movie.formatted_score
     end
 
     should "update computed score whenevery tweet is removed" do
@@ -67,7 +67,7 @@ class MovieTest < ActiveSupport::TestCase
       @movie.reload
       tweet1.negative!
 
-      assert_equal "0%", @movie.reload.last_computed_score
+      assert_equal "0%", @movie.formatted_score
     end
   end
 
@@ -118,7 +118,7 @@ class MovieTest < ActiveSupport::TestCase
       movie2 = Factory(:movie, :released_on => "10/29/2010")
       movie3 = Factory(:movie, :released_on => "10/28/2010")
 
-      Timecop.freeze(Time.local(2010, 11, 2, 12, 0, 0)) do
+      Timecop.freeze(Time.local(2010, 10, 28, 12, 0, 0)) do
         assert_same_elements [movie3, movie2], Movie.this_weekend
       end
     end

@@ -45,26 +45,19 @@ class Tweet < ActiveRecord::Base
 
   scope :spotlight, where(:featured => true)
 
-  #default_scope order("tweets.created_on_twitter desc")
-
-  after_create :fresh!
-
-  after_save  :update_movie_score
+  after_create  :fresh!
 
   validates :twitter_id, :presence => true, :retweet => true, :uniqueness => { :scope => :movie_id }
 
   validates :text, :presence => true, :retweet => true, :uniqueness => { :scope => [:from_user, :movie_id] }
 
   def self.from_hashie!(hashie)
-    new({
+    options = {
       :twitter_id => hashie.delete("id"),
       :created_on_twitter => hashie.delete("created_at")
-    }.merge(only_related_attributes(hashie)))
-  end
+    }.merge(only_related_attributes(hashie))
 
-  def update_movie_score
-    movie.update_score
-    movie.save
+    new(options)
   end
 
   def external
