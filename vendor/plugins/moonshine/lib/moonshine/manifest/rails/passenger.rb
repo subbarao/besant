@@ -2,7 +2,11 @@ module Moonshine::Manifest::Rails::Passenger
   # Install the passenger gem
   def passenger_gem
     configure(:passenger => {})
-    package "passenger", :ensure => (configuration[:passenger][:version] || :latest), :provider => :gem
+    package "passenger",
+      :ensure => (configuration[:passenger][:version] || :latest),
+      :provider => :gem,
+      :require => [ package('libcurl4-gnutls-dev') ]
+    package 'libcurl4-gnutls-dev', :ensure => :installed
   end
 
   # Build, install, and enable the passenger apache module. Please see the
@@ -24,8 +28,12 @@ module Moonshine::Manifest::Rails::Passenger
     # Build Passenger from source
     exec "build_passenger",
       :cwd => configuration[:passenger][:path],
-      :command => '/usr/bin/ruby -S rake clean apache2',
-      :unless => "ls `passenger-config --root`/ext/apache2/mod_passenger.so",
+      :command => 'sudo /usr/bin/ruby -S rake clean apache2',
+      :unless => [
+        "ls `passenger-config --root`/ext/apache2/mod_passenger.so",
+        "ls `passenger-config --root`/ext/ruby/ruby-*/passenger_native_support.so",
+        "ls `passenger-config --root`/agents/PassengerLoggingAgent"
+        ].join(" && "),
       :require => [
         package("passenger"),
         package("apache2-mpm-worker"),

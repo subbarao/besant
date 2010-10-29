@@ -71,6 +71,12 @@ PidFile ${APACHE_PID_FILE}
 Timeout <%= configuration[:apache][:timeout] %>
 
 #
+# TraceEnable: Determines the behavior on TRACE requests [on|off|extended]
+#
+
+TraceEnable <%= configuration[:apache][:trace_enable] %>
+
+#
 # KeepAlive: Whether or not to allow persistent connections (more than
 # one request per connection). Set to "Off" to deactivate.
 #
@@ -269,12 +275,7 @@ CustomLog /var/log/apache2/other_vhosts_access.log vhost_combined
 #    ErrorDocument 502 /error/HTTP_BAD_GATEWAY.html.var
 #    ErrorDocument 503 /error/HTTP_SERVICE_UNAVAILABLE.html.var
 #    ErrorDocument 506 /error/HTTP_VARIANT_ALSO_VARIES.html.var
- ExpiresActive On
-  <FilesMatch "\.(ico|gif|jpe?g|png|js|css)$">
-    ExpiresDefault "access plus 1 year"
-    Header unset ETag
-    FileETag none
-  </FilesMatch>
+
 
 
 # Include of directories ignores editors' and dpkg's backup files,
