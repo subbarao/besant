@@ -50,7 +50,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/edit
   def sync
-    @movie = Movie.find(params[:id].to_i).tap { |r| r.sync }
+    @movie = Movie.find(params[:id].to_i).tap {|t| t.keywords.query_twitter }
     @tweets = @movie.tweets.paginate(:page => params[:page])
     render :action => 'edit'
   end

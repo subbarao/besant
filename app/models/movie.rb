@@ -30,10 +30,6 @@ class Movie < ActiveRecord::Base
 
   after_save :update_score
 
-  def sync
-    keywords.inject(0) { |all, k| all + k.search_on_twitter - 1 }
-  end
-
   def update_score
     score(true)
     self.last_computed_score = formatted_score
