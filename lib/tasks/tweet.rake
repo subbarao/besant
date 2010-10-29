@@ -28,7 +28,7 @@ namespace :tweets do
 
   desc "Search twitter hourly"
   task :hourly => :environment do
-    call_twitter Movie.this_week
+    call_twitter Movie.last_weekend
   end
 
   desc "Search twitter daily"

@@ -8,7 +8,7 @@ end
 
 class Tweet < ActiveRecord::Base
 
-  belongs_to :movie
+  belongs_to :movie, :inverse_of => :tweets
 
   serialize :metadata
 
@@ -33,9 +33,6 @@ class Tweet < ActiveRecord::Base
 
   @@per_page = 10
 
-  delegate :update_score, :to => :movie
-
-
   scope :hit, where(["tweets.max_polarity > 0 "])
 
   scope :flop, where(["tweets.max_polarity < 0 "])
@@ -52,7 +49,7 @@ class Tweet < ActiveRecord::Base
 
   after_create :fresh!
 
-  before_save   :update_score
+  after_save  :update_movie_score
 
   validates :twitter_id, :presence => true, :retweet => true, :uniqueness => { :scope => :movie_id }
 
@@ -63,6 +60,11 @@ class Tweet < ActiveRecord::Base
       :twitter_id => hashie.delete("id"),
       :created_on_twitter => hashie.delete("created_at")
     }.merge(only_related_attributes(hashie)))
+  end
+
+  def update_movie_score
+    movie.update_score
+    movie.save
   end
 
   def external

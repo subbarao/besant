@@ -55,14 +55,19 @@ class MovieTest < ActiveSupport::TestCase
 
     should "update computed score whenevery tweet is added" do
       tweet1 = Factory(:tweet, :movie => @movie)
+      @movie.reload
+
       tweet1.positive!
-      assert_equal "100%", @movie.last_computed_score
+      assert_equal 100, @movie.computed_score
+      assert_equal "100%", @movie.reload.last_computed_score
     end
 
     should "update computed score whenevery tweet is removed" do
       tweet1 = Factory(:tweet, :movie => @movie)
+      @movie.reload
       tweet1.negative!
-      assert_equal "0%", @movie.last_computed_score
+
+      assert_equal "0%", @movie.reload.last_computed_score
     end
   end
 
@@ -70,11 +75,21 @@ class MovieTest < ActiveSupport::TestCase
 
     should "know movies released last week" do
       movie1 = Factory(:movie, :released_on => "1/2/2009")
-      movie2 = Factory(:movie, :released_on => "1/6/2009")
+      movie2 = Factory(:movie, :released_on => "1/9/2009")
       movie3 = Factory(:movie, :released_on => "1/6/2008")
 
-      Timecop.freeze(Time.local(2009, 1, 7, 12, 0, 0)) do
-        assert_same_elements [movie1, movie2], Movie.this_week
+      Timecop.freeze(Time.local(2009, 1, 10, 12, 0, 0)) do
+        assert_same_elements [movie1], Movie.last_weekend
+      end
+    end
+
+    should "know movies released this week" do
+      movie1 = Factory(:movie, :released_on => "1/2/2009")
+      movie2 = Factory(:movie, :released_on => "1/9/2009")
+      movie3 = Factory(:movie, :released_on => "1/6/2008")
+
+      Timecop.freeze(Time.local(2009, 1, 10, 12, 0, 0)) do
+        assert_same_elements [movie2], Movie.this_weekend
       end
     end
 
