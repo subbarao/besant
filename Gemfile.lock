@@ -1,5 +1,6 @@
-PATH
-  remote: vendor/plugins/openamplify-0.2.3
+GIT
+  remote: git://github.com/gregmoreno/openamplify.git
+  revision: 108fe46d7b6958b9ddea03426880371115a593b5
   specs:
     openamplify (0.2.3)
       json (~> 1.2)

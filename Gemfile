@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'jquery-rails'
 gem 'meta_search'
 gem 'rails', '3.0.1'
-gem 'openamplify', :path => "vendor/plugins/openamplify-0.2.3"
+gem 'openamplify', :git => "git://github.com/gregmoreno/openamplify.git"
 gem 'hoptoad_notifier'
 #gem 'capistrano'
 #gem 'capistrano-ext'
