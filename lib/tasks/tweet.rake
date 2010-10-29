@@ -15,10 +15,10 @@ namespace :tweets do
         messages << "#{movie.name} =============>   #{Tweet.count - twt_cnt}".tap { |s| print(s) }
       end
     rescue
-      message << "exception ==========> #{$!.message}".tap { |s| print(s) }
+      messages << "exception ==========> #{$!.message}".tap { |s| print(s) }
     end
 
-    Job.create(:number_of_requests => req_cnt, :message => message.join("\n"))
+    Job.create(:number_of_requests => req_cnt, :message => messages.join("\n"))
   end
 
   desc "Search twitter minutely"
