@@ -18,7 +18,7 @@
 #:time_zone: UTC
 
 # Directory where application is deployed to
-:deploy_to: /srv/reviewumpire
+:deploy_to: /var/www/apps/reviewumpire
 
 # Primary domain application will be accessed as 
 :domain: reviewumpire.com

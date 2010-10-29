@@ -1,4 +1,4 @@
-server '173.230.129.162', :app, :web, :db, :primary => true
+server '173.255.231.152',:app, :web, :db, :primary => true
 
 namespace :dragonfly do
   desc "Symlink the Rack::Cache files"
