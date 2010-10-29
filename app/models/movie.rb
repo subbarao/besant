@@ -28,7 +28,7 @@ class Movie < ActiveRecord::Base
 
   accepts_nested_attributes_for :tweets, :allow_destroy => true
 
-  after_save :update_score
+  before_save :update_score
 
   def update_score
     score(true)

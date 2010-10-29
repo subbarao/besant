@@ -52,7 +52,7 @@ class Tweet < ActiveRecord::Base
 
   after_create :fresh!
 
-  after_save   :update_score
+  before_save   :update_score
 
   validates :twitter_id, :presence => true, :retweet => true, :uniqueness => { :scope => :movie_id }
 
