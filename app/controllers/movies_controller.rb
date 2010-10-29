@@ -55,7 +55,7 @@ class MoviesController < ApplicationController
     render :action => 'edit'
   end
 
-  %w(positive negative mixed spotlight fresh terminate).each do |method|
+  %w(positive negative mixed spotlight fresh terminate external).each do |method|
     define_method(method) do
       @movie = Movie.find(params[:id].to_i)
       @tweets = @movie.tweets.send(method).paginate(:page => params[:page], :per_page => 21)
