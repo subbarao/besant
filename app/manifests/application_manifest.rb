@@ -32,7 +32,7 @@ class ApplicationManifest < Moonshine::Manifest::Rails
     # package 'some_native_package', :ensure => :installed
 
     minutely = "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile tweets:minutely RAILS_ENV=#{ENV['RAILS_ENV']}"
-    cron 'minutely_task', :command => minutely, :user => configuration[:user], :minute => "*/20"
+    cron 'this_weekend_movies', :command => minutely, :user => configuration[:user], :minute => "*/20"
 
     hourly = "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile tweets:hourly RAILS_ENV=#{ENV['RAILS_ENV']}"
     cron 'hourly_task', :command => hourly, :user => configuration[:user], :minute => 0, :hour => "*/3"
