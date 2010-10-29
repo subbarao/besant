@@ -71,4 +71,11 @@ $(document).ready(function() {
 			$("input[id$='featured']").removeAttr('checked')
 		}
 	});
+
+	$(".category_all").live('click', function() {
+		$("input[name$='[category]'][value='" + $(this).val() + "']").each(function() {
+			$(this).attr('checked', 'checked');
+		});
+	});
 });
+

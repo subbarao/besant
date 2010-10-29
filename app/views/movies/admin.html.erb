@@ -12,7 +12,13 @@
       <td></td>
       <td class="small-text"><%= f.text_field :from_user_contains, :size => 15 %></td>
       <td><%= f.text_field :text_contains %></td>
-      <td class="small-text"></td>
+      <td class="small-text">
+        <% %w(positive negative mixed fresh irrelevant).each do | cat | %>
+          <%= radio_button_tag "admin_category", cat , false, :class => 'category_all'%>
+          <%= label_tag cat %>
+          <br/>
+        <% end %>
+      </td>
       <td class="small-text"><input type="checkbox" id="feature_all"></td>
       <td class="small-text"><input type="checkbox" id="destroy_all"></td>
     </tr>
