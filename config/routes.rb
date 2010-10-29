@@ -20,6 +20,7 @@ Tweet2review::Application.routes.draw do
       get :edit_negative
       get :edit_mixed
       get :edit_fresh
+      get :edit_external
       get :edit_spotlight
       get :edit_terminate
     end

@@ -45,7 +45,8 @@ class Tweet < ActiveRecord::Base
 
   scope :spotlight, where(:featured => true)
 
-  after_create  :fresh!
+  after_create  :fresh!,    :unless => :url?
+  after_create  :external!, :if => :url?
 
   validates :twitter_id, :presence => true, :retweet => true, :uniqueness => { :scope => :movie_id }
 
@@ -60,11 +61,11 @@ class Tweet < ActiveRecord::Base
     new(options)
   end
 
-  def external
+  def url
     ActionView::Helpers::TextHelper::AUTO_LINK_RE.match(text)[0]
   end
 
-  def external?
+  def url?
     ActionView::Helpers::TextHelper::AUTO_LINK_RE.match(text).present?
   end
 
@@ -124,5 +125,5 @@ class Tweet < ActiveRecord::Base
     end
   end
 
-  create_bool_methods :fresh, :terminate, :positive, :negative, :mixed
+  create_bool_methods :fresh, :terminate, :positive, :negative, :mixed, :external
 end

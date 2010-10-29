@@ -13,7 +13,7 @@
       <td class="small-text"><%= f.text_field :from_user_contains, :size => 15 %></td>
       <td><%= f.text_field :text_contains %></td>
       <td class="small-text">
-        <% %w(positive negative mixed fresh irrelevant).each do | cat | %>
+        <% %w(positive negative mixed fresh terminate).each do | cat | %>
           <%= radio_button_tag "admin_category", cat , false, :class => 'category_all'%>
           <%= label_tag cat %>
           <br/>
@@ -51,7 +51,7 @@
         </td>
         <td class="large-text"><%= auto_link tweet.object.text, :urls, :target => :_blank %></td>
         <td class="small-text">
-          <% %w(positive negative mixed fresh irrelevant).each do | cat | %>
+          <% %w(positive negative mixed fresh terminate).each do | cat | %>
             <%= tweet.radio_button :category, cat %>
             <%= f.label :category, cat.camelize %>
             <br/>

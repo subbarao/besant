@@ -14,10 +14,16 @@ class TweetTest < ActiveSupport::TestCase
 
   context "Tweet instance" do
 
+    should "mark as external if tweet is from external resource" do
+      tweet = Factory(:tweet, :text => "this youtube http://youtube.com")
+
+      assert tweet.external?
+    end
+
     should "detect external links when text has http" do
       tweet = Tweet.new(:text => "this is external link to google http://google.com")
 
-      assert tweet.external?
+      assert tweet.url?
     end
 
     should "detect as non external links when text does not contain http" do
