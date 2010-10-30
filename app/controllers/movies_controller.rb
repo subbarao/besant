@@ -18,6 +18,7 @@ class MoviesController < ApplicationController
     @movies = Movie.active
 
     respond_to do |format|
+      format.mobile  
       format.html # index.html.erb
       format.xml  { render :xml => @movies }
     end

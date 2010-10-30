@@ -1,0 +1,25 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <title>Review Umpire</title> 
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+    <%= stylesheet_link_tag "mobile" %>
+
+    <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+  </head> 
+  <body> 
+    <div data-role="page">
+
+      <div data-role="header">
+        <h1>Review Umpire</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">	
+        <%= yield %>
+      </div><!-- /content -->
+
+    </div><!-- /page -->
+  </body>
+</html>
+

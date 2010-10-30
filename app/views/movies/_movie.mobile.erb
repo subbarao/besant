@@ -1,0 +1,7 @@
+<li><%= movie.name %>
+  <ul>
+    <li><%= link_to "Positive tweets(#{movie.tweets.positive.count})", positive_movie_path(movie) %></li>
+    <li><%= link_to "Negative tweets(#{movie.tweets.negative.count})", negative_movie_path(movie) %></li>
+    <li><%= link_to "Mixed tweets(#{movie.tweets.mixed.count})", mixed_movie_path(movie) %></li>
+  </ul>
+</li>
