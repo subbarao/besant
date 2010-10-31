@@ -2,11 +2,13 @@
   <%= @movie.name %>
 <% end %>
 
-<ul data-role="listview">
-  <% @movie.tweets.assesed.limit(30).each do | tweet | %>
-    <li>
-      <%= image_tag tweet.profile_image_url %>
-      <h3 style="padding-left:50px;"><%= tweet.text %></h3>
-	  </li>
+<table> 
+	<tbody>
+  <% @movie.tweets.spotlight.limit(30).each do | tweet | %>
+    <tr>
+		  <td> <%= image_tag tweet.profile_image_url %> </td>
+		  <td><%= tweet.text %> </td>
+	  </tr>
   <% end %>
-</ul>
+	</tbody>
+</table>

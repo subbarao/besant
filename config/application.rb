@@ -32,7 +32,7 @@ module Tweet2review
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery.min rails  jquery.infinitescroll.min jquery.roundabout.min jquery.roundabout-shapes-1.1.min jquery-ui-1.8.5.custom.min application)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery.min rails  jquery.infinitescroll.min jquery.easing.1.3 jquery.roundabout.min jquery.roundabout-shapes-1.1.min jquery-ui-1.8.5.custom.min application)
     config.action_view.stylesheet_expansions[:defaults] = %w(application  jquery-ui-1.8.5.custom)
 
     # Configure the default encoding used in templates for Ruby 1.9.
