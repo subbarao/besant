@@ -1,5 +1,6 @@
 <li>
-  <%= image_tag movie.cover_image.url("300x200") %>
-  <h3><%= link_to movie.name, movie %> (<%= movie.computed_score %>%)</h3>
+<%= image_tag movie.cover_image.url("80x80"),:height => 80,:width => 80 %>
+  <h3 style="margin-top:0;"><%= link_to movie.name, movie %> </h3>
   <p><strong><%= movie.cast %></strong></p>
+  <p><strong><%= movie.computed_score %>% reviewumpire score.</p></strong>
 </li>
