@@ -2,9 +2,9 @@ class MoviesController < ApplicationController
 
   before_filter :authenticate, :except => [:autocomplete, :index, :show, :positive, :negative, :mixed]
 
-  caches_page   :index, :show
-  cache_sweeper :movie_sweeper, :only => [:update, :create]
-  caches_action :show, :if => proc { params[:page].blank? }
+  #caches_page   :index, :show
+  #cache_sweeper :movie_sweeper, :only => [:update, :create]
+  #caches_action :show, :if => proc { params[:page].blank? }
 
 
   def autocomplete

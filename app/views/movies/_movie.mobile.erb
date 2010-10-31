@@ -1,7 +1,5 @@
-<li><%= movie.name %>
-  <ul>
-    <li><%= link_to "Positive tweets(#{movie.tweets.positive.count})", positive_movie_path(movie) %></li>
-    <li><%= link_to "Negative tweets(#{movie.tweets.negative.count})", negative_movie_path(movie) %></li>
-    <li><%= link_to "Mixed tweets(#{movie.tweets.mixed.count})", mixed_movie_path(movie) %></li>
-  </ul>
+<li>
+  <%= image_tag movie.cover_image.url("300x200") %>
+  <h3><%= link_to movie.name, movie %> (<%= movie.computed_score %>%)</h3>
+  <p><strong><%= movie.cast %></strong></p>
 </li>

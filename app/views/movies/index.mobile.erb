@@ -1,3 +1,9 @@
-<ul data-role="listview">
-  <%= render @movies %>
+<% content_for :title do %>
+  Review Umpire
+<% end %>
+<ul data-role="listview" data-filter="true">
+  <% Movie.group(:released_on).select(:released_on).each do | date | %>
+    <li data-role="list-divider"><%= date.released_on.strftime("%d %B, %Y") %></li>
+    <%= render Movie.where(:released_on => date.released_on) %>
+  <% end %>
 </ul>

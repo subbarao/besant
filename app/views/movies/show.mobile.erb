@@ -1,8 +1,12 @@
-<ul data-role="listview">
-<% @movie.tweets.assesed.limit(30).each do | tweet | %>
-  <li>
-  <%= image_tag tweet.profile_image_url %>
-  <h3><%= tweet.text %></h3>
-  </li>
+<% content_for :title do %>
+  <%= @movie.name %>
 <% end %>
+
+<ul data-role="listview">
+  <% @movie.tweets.assesed.limit(30).each do | tweet | %>
+    <li>
+      <%= image_tag tweet.profile_image_url %>
+      <h3 style="padding-left:50px;"><%= tweet.text %></h3>
+	  </li>
+  <% end %>
 </ul>
