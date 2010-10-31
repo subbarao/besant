@@ -2,9 +2,21 @@
   <%= @movie.name %>
 <% end %>
 
+<div data-inline="true" class="ui-grid-b">
+  <div class="ui-block-a">
+  <%=  link_to "Positive", positive_movie_path(@movie),  params[:action] == "positive" ? { "data-role" => "button","data-theme"=>"b", "data-icon" => "check"   } :  { "data-role" => "button", "data-icon" => "check"  }%> 
+  </div>
+  <div class="ui-block-b">
+  <%=  link_to "Negative", negative_movie_path(@movie), params[:action] == "negative" ? { "data-role" => "button","data-theme"=>"b", "data-icon" => "delete" } : { "data-role" => "button" , "data-icon" => "delete" } %>
+  </div>
+  <div class="ui-block-c">
+  <%=  link_to "Mixed", mixed_movie_path(@movie),  params[:action] == "mixed" ? { "data-role" => "button","data-theme" => "b","data-icon" => "info" } : { "data-role" => "button", "data-icon" => "info"} %>
+  </div>
+</div>
+
 <table> 
 	<tbody>
-  <% @movie.tweets.spotlight.limit(30).each do | tweet | %>
+  <% @tweets.each do | tweet | %>
     <tr>
     <td> <%= image_tag tweet.profile_image_url,:height => 48,:width => 48 %> </td>
 		  <td><%= tweet.text %> </td>
@@ -12,3 +24,4 @@
   <% end %>
 	</tbody>
 </table>
+<%= will_paginate @tweets %>

@@ -64,8 +64,8 @@ class MoviesController < ApplicationController
       @movie = Movie.find(params[:id].to_i)
       @tweets = @movie.tweets.send(method).paginate(:page => params[:page], :per_page => 21)
       respond_to do |format|
-        format.mobile :action => :show
-        format.html :action => :show
+        format.mobile { render :action => :show }
+        format.html { render :action => :show }
       end
     end
 
