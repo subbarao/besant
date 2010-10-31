@@ -6,7 +6,7 @@
 	<tbody>
   <% @movie.tweets.spotlight.limit(30).each do | tweet | %>
     <tr>
-    <td> <%= image_tag tweet.profile_image_url,:height =>,:width => 48 %> </td>
+    <td> <%= image_tag tweet.profile_image_url,:height => 48,:width => 48 %> </td>
 		  <td><%= tweet.text %> </td>
 	  </tr>
   <% end %>
