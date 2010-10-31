@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     @movies = Movie.active
 
     respond_to do |format|
-      format.mobile  
+      format.mobile
       format.html # index.html.erb
       format.xml  { render :xml => @movies }
     end
@@ -29,7 +29,10 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id].to_i)
     @tweets = @movie.tweets.assesed.paginate(:page => params[:page], :per_page => 21)
-    render :action => :show
+    respond_to do |format|
+      format.mobile
+      format.html # show.html.erb
+    end
   end
 
   # GET /movies/new
@@ -60,7 +63,10 @@ class MoviesController < ApplicationController
     define_method(method) do
       @movie = Movie.find(params[:id].to_i)
       @tweets = @movie.tweets.send(method).paginate(:page => params[:page], :per_page => 21)
-      render :action => :show
+      respond_to do |format|
+        format.mobile :action => :show
+        format.html :action => :show
+      end
     end
 
     define_method("edit_#{method}") do
