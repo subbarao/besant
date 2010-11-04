@@ -292,9 +292,6 @@ a {
   height: 500px;
 }
 
-.spotlight{
-  padding: 5px;
-}
 
 .tweet_movie ul{
   padding-left: 15px;
@@ -421,32 +418,6 @@ a.more{
 .movie-score {
   padding-left: 20px;
 }
-.spotlight .movie-score{
-  padding-right: 20px;
-  margin-top: 22px;
-}
-
-.roundabout-holder {
-  list-style: none;
-  width: 60em;
-  height: 10em;
-  margin: 1em auto;
-}
-
-.roundabout-moveable-item {
-  height: 10em;
-  width: 15em;
-  cursor: pointer;
-}
-
-.roundabout-moveable-item img {
-  height: 10em;
-  width: 15em;
-}
-
-.roundabout-in-focus {
-  cursor: auto;
-}
 
 .large-text{
   width: 400px;
@@ -455,3 +426,11 @@ a.more{
 .small-text{
   width: 130px;
 }
+
+#carousel { width: 970px; margin: 15px; float: left; }
+#nav { width: 970px; margin: 15px; float: left; }
+#nav li { width: 50px; float: left; margin: 8px; list-style: none; }
+#nav a { width: 50px; padding: 3px; display: block; border: 1px solid #ccc; }
+#nav a.activeSlide { background: #88f; }
+#nav a:focus { outline: none; }
+#nav img { border: none; display: block; }

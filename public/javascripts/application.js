@@ -25,20 +25,17 @@ $(document).ready(function() {
 		return true;
 	});
 
-	$('#carousel ul').roundabout({
-		startingChild: 0,
-		minOpacity: 0.0,
-		// invisible!
-		minScale: 0.2,
-		// tiny!
-		shape: 'square'
-	});
-
-	$('#carousel li').focus(function() {
-		$("#" + $(this).find("a").attr('rel')).removeClass("inactive");
-
-	}).blur(function() {
-		$("#" + $(this).find("a").attr('rel')).addClass("inactive");
+	$('#carousel').cycle({
+		fx: 'fade',
+		timeout: 14000,
+		speed: 1000,
+		startingSlide: 0,
+		pager: '#nav',
+		pagerAnchorBuilder: function(idx, slide) {
+			// return selector string for existing anchor 
+			return '#nav li:eq(' + idx + ') a';
+		},
+		cleartypeNoBg: true
 	});
 
 	$(".tweet").live("click", function() {

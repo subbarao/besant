@@ -1,3 +1,7 @@
+<div class="poster">
+  <%= image_tag(movie.cover_image.thumb("300x225").url)  %>
+</div>
+
 <div class="movie-info">
   <div class="movie-info-inner">
     <div class="movie-meta">
@@ -27,9 +31,9 @@
         <%= movie.formatted_score %>
       </div>
       <p>
-        <%= movie.tweets.positive.count %> positive |
-        <%= movie.tweets.negative.count %> negative |
-        <%= movie.tweets.mixed.count %> mixed 
+        <%= link_to "#{movie.tweets.positive.count} positive", positive_movie_path(movie) %> |
+        <%= link_to "#{movie.tweets.negative.count} negative", negative_movie_path(movie) %> |
+        <%= link_to "#{movie.tweets.mixed.count} mixed", mixed_movie_path(movie) %>
       </p>
     </div>
   </div>

@@ -9,9 +9,6 @@
 <% content_for :keywords do %>
   <%= "#{@movie.name} movie reviews, #{@movie.name} tweets, #{@movie.name} talk, #{@movie.name} positive talk, #{@movie.name} negative talk" %> 
 <% end %>
-<div class="poster">
-  <%= image_tag(@movie.cover_image.thumb("300x225").url)  %>
-</div>
 <%= render @movie %>
 <div class="inner pager">
   <%= render :partial => "tweets/tweets", :locals => { :tweets => @tweets, :movie => @movie } %>
