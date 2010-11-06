@@ -11,13 +11,15 @@
 <% end %>
 
 <ul id="nav">
-  <% Movie.all.limit(13).each do | movie | %>
-    <li> <%= link_to image_tag(movie.cover_image.thumb("50x50").url, :width => 50, :height => 50), "#" %> </li>
+  <% Movie.limit(13).to_ary.each do | movie | %>
+    <% if movie.cover_image %>
+      <li> <%= link_to image_tag(movie.cover_image.thumb("50x50").url, :width => 50, :height => 50), "#" %> </li>
+    <% end %>
   <% end %>
 </ul>
 
 <div id="carousel">				
-  <% Movie.all.limit(13).each do | movie | %>
+  <% Movie.limit(13).to_ary.each do | movie | %>
     <div>
       <%= render movie %>
       <%= render movie.tweets.spotlight.limit(8) %>
