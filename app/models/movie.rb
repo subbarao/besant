@@ -31,6 +31,7 @@ class Movie < ActiveRecord::Base
   end
 
   def computed_score
+    return 0 if tweets.assesed.count == 0
     (((tweets.positive.count + (tweets.mixed.count * 0.5)) * 100.0)/ tweets.assesed.count).to_i
   end
 
