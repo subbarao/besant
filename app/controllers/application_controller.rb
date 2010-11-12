@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  has_mobile_fu
+  has_mobile_fu(true)
 
   rescue_from RuntimeError, :with => :search_error
 

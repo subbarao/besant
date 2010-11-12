@@ -2,26 +2,30 @@
   <%= @movie.name %>
 <% end %>
 
-<div data-inline="true" class="ui-grid-b">
-  <div class="ui-block-a">
-  <%=  link_to "Positive", positive_movie_path(@movie),  params[:action] == "positive" ? { "data-role" => "button","data-theme"=>"b", "data-icon" => "check"   } :  { "data-role" => "button", "data-icon" => "check"  }%> 
-  </div>
-  <div class="ui-block-b">
-  <%=  link_to "Negative", negative_movie_path(@movie), params[:action] == "negative" ? { "data-role" => "button","data-theme"=>"b", "data-icon" => "delete" } : { "data-role" => "button" , "data-icon" => "delete" } %>
-  </div>
-  <div class="ui-block-c">
-  <%=  link_to "Mixed", mixed_movie_path(@movie),  params[:action] == "mixed" ? { "data-role" => "button","data-theme" => "b","data-icon" => "info" } : { "data-role" => "button", "data-icon" => "info"} %>
-  </div>
+<div data-role="navbar" data-theme="e" data-inset="true"> 
+	<ul> 
+  <li>
+    <%=  link_to "Positive", positive_movie_path(@movie), 
+    "data-icon"=>"gear","data-iconpos"=>"top","data-theme"=>"b" %>
+  </li>
+  <li>
+    <%=  link_to "Mixed", mixed_movie_path(@movie), 
+    "data-icon"=>"gear","data-iconpos"=>"top","data-theme"=>"b" %>
+  </li>
+  <li>
+    <%=  link_to "Negative", negative_movie_path(@movie), 
+    "data-icon"=>"gear","data-iconpos"=>"top","data-theme"=>"b" %>
+  </li>
+	</ul> 
 </div>
 
-<table> 
-	<tbody>
+<%= image_tag(@movie.cover_image.thumb("300x225").url)  %>
+
+<ul data-role="listview" data-inset="true"> 
   <% @tweets.each do | tweet | %>
-    <tr>
-    <td> <%= image_tag tweet.profile_image_url,:height => 48,:width => 48 %> </td>
-		  <td><%= tweet.text %> </td>
-	  </tr>
+			<li> 
+        <%= image_tag tweet.profile_image_url %>
+        <h3> <%= link_to auto_link(tweet.text),  tweet.twitter_url, :rel=>"external" %></h3> 
+			</li> 
   <% end %>
-	</tbody>
-</table>
-<%= will_paginate @tweets %>
+</ul>
