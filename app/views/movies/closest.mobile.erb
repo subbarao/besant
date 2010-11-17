@@ -1,0 +1,14 @@
+<% content_for :title do %>
+  <%= @movie.name %>
+<% end %>
+<%= image_tag(@movie.cover_image.thumb("300x225").url)  %>
+
+<ul data-role="listview" data-inset="true"> 
+  <% @theaters.each do | theater | %>
+    <li> 
+      <h3> <%= theater.name %> </h3> 
+        <p><strong><%= theater.address %></strong></p> 
+        <p class="ui-li-aside"><strong><%= theater.times %></strong></p> 
+    </li> 
+  <% end %>
+</ul>

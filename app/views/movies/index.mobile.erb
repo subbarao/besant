@@ -1,5 +1,12 @@
-<% content_for :title do %>
-  Review Umpire
+<% content_for :menu do %>
+		
+		<div data-role="navbar"> 
+			<ul> 
+				<li><a href="#">One</a></li> 
+				<li><a href="#">Two</a></li> 
+				<li><a href="#">Three</a></li> 
+			</ul> 
+		</div>
 <% end %>
 <ul data-role="listview" data-filter="true">
   <% Movie.group(:released_on).select(:released_on).each do | date | %>

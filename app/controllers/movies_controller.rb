@@ -1,10 +1,15 @@
 class MoviesController < ApplicationController
 
-  before_filter :authenticate, :except => [:autocomplete, :index, :show, :positive, :negative, :mixed]
+  before_filter :authenticate, :except => [:autocomplete, :index, :show, :positive, :negative, :mixed, :closest]
 
   #caches_page   :index, :show
   #cache_sweeper :movie_sweeper, :only => [:update, :create]
   #caches_action :show, :if => proc { params[:page].blank? }
+  def closest
+    @movie = Movie.find(params[:id].to_i)
+    res = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(params.values_at(:lat,:lng))
+    @theaters = Scrapper.new(open(MovieFinder.new(@movie.name, res.zip).today)).to_theaters
+  end
 
 
   def autocomplete

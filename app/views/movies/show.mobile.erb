@@ -1,6 +1,18 @@
-<% content_for :title do %>
-  <%= @movie.name %>
+<% content_for :menu do %>
+		<div data-role="navbar"> 
+			<ul> 
+				<li><a href="#">One</a></li> 
+				<li><a href="#">Two</a></li> 
+				<li><a href="#">Three</a></li> 
+			</ul> 
+		</div>
 <% end %>
+
+<ul class="timinigs" data-role="listview" data-inset="true"> 
+	<li> 
+  <h3> <%= link_to "showtime", closest_movie_path(@movie) %></h3> 
+	</li> 
+</ul>
 
 <div data-role="navbar" data-theme="e" data-inset="true"> 
 	<ul> 

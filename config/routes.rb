@@ -9,6 +9,7 @@ Tweet2review::Application.routes.draw do
     end
 
     member do
+      get :closest
       get :sync
       get :positive
       get :negative

@@ -2,6 +2,9 @@ source 'http://rubygems.org'
 
 gem 'jquery-rails'
 gem 'meta_search'
+gem 'hpricot'
+gem 'geokit'
+gem 'geokit-rails3'
 gem 'rails', '3.0.1'
 gem 'openamplify', :git => "git://github.com/gregmoreno/openamplify.git"
 gem 'hoptoad_notifier'
