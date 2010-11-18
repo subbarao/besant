@@ -1,13 +1,12 @@
 <% content_for :menu do %>
-		
-		<div data-role="navbar"> 
-			<ul> 
-				<li><a href="#">One</a></li> 
-				<li><a href="#">Two</a></li> 
-				<li><a href="#">Three</a></li> 
-			</ul> 
-		</div>
+	<div data-role="navbar"> 
+		<ul> 
+			<li><a href="#">In Theaters</a></li> 
+			<li><a href="#">Near You</a></li> 
+		</ul> 
+	</div>
 <% end %>
+
 <ul data-role="listview" data-filter="true">
   <% Movie.group(:released_on).select(:released_on).each do | date | %>
     <li data-role="list-divider"><%= date.released_on.strftime("%d %B, %Y") %></li>

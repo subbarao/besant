@@ -12,15 +12,16 @@
   <body> 
     <div data-role="page">
 
-      <div data-role="header" data-position="inline">
-        <a href='#' class='ui-btn-left ui-btn-back' data-icon='arrow-l'>Back</a>
-        <%= content_for :menu %>
-      </div><!-- /header -->
-
-
-      <div data-role="content">	
+    <div data-role="header">
+      <h1>Page Title</h1> 
+    </div><!-- /header -->
+    <div data-role="content">	
         <%= yield %>
-      </div><!-- /content -->
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="inline">
+      <%= content_for :menu %>
+    </div><!-- /footer -->
 
     </div><!-- /page -->
   </body>

@@ -1,43 +1,42 @@
+<style type="text/css">	
+		.feelings .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+		.feelings .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
+		#hate .ui-icon { background:  url(images/hate.png) 0 0 no-repeat; background-size: 24px 22px; }
+		#love .ui-icon { background:  url(images/love.png) 0 0 no-repeat; background-size: 24px 22px; }
+		#mixed .ui-icon { background:  url(images/mixed.png) 0 0 no-repeat; background-size: 24px 22px; }
+</style>
+
+
+
+<%= image_tag(@movie.cover_image.thumb("300x225").url)  %>
+		<table summary="This table lists all the JetBlue flights.">
+		  <tbody>
+      <% @tweets.each do | tweet | %>
+		    <tr>
+		    <td> <%= image_tag tweet.profile_image_url,:class => "ui-thumb" %></td>
+        <td><%= tweet.text %></td>
+		  </tr>
+      <% end %>
+		  </tbody>
+		</table>
+	
+<ul class="showtimes" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b" data-url='<%= closest_movie_path(@movie) %>'>
+ <li data-role="list-divider">Showtimings</li>
+</ul>
+
+
 <% content_for :menu do %>
-		<div data-role="navbar"> 
+		<div data-role="navbar" class="feelings"> 
 			<ul> 
-				<li><a href="#">One</a></li> 
-				<li><a href="#">Two</a></li> 
-				<li><a href="#">Three</a></li> 
+        <li>
+          <%=  link_to "Love",  positive_movie_path(@movie),  :id => "love", "data-icon" => "custom" %>  
+        </li>
+        <li>
+          <%=  link_to "Hate",  negative_movie_path(@movie),  :id => "hate", "data-icon" => "custom" %>  
+        </li>
+        <li>
+          <%=  link_to "Mixed", mixed_movie_path(@movie),     :id => "mixed", "data-icon" => "custom" %>  
+        </li>
 			</ul> 
 		</div>
 <% end %>
-
-<ul class="timinigs" data-role="listview" data-inset="true"> 
-	<li> 
-  <h3> <%= link_to "showtime", closest_movie_path(@movie) %></h3> 
-	</li> 
-</ul>
-
-<div data-role="navbar" data-theme="e" data-inset="true"> 
-	<ul> 
-  <li>
-    <%=  link_to "Positive", positive_movie_path(@movie), 
-    "data-icon"=>"gear","data-iconpos"=>"top","data-theme"=>"b" %>
-  </li>
-  <li>
-    <%=  link_to "Mixed", mixed_movie_path(@movie), 
-    "data-icon"=>"gear","data-iconpos"=>"top","data-theme"=>"b" %>
-  </li>
-  <li>
-    <%=  link_to "Negative", negative_movie_path(@movie), 
-    "data-icon"=>"gear","data-iconpos"=>"top","data-theme"=>"b" %>
-  </li>
-	</ul> 
-</div>
-
-<%= image_tag(@movie.cover_image.thumb("300x225").url)  %>
-
-<ul data-role="listview" data-inset="true"> 
-  <% @tweets.each do | tweet | %>
-			<li> 
-        <%= image_tag tweet.profile_image_url %>
-        <h3> <%= link_to auto_link(tweet.text),  tweet.twitter_url, :rel=>"external" %></h3> 
-			</li> 
-  <% end %>
-</ul>

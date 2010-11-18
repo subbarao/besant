@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id].to_i)
     res = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(params.values_at(:lat,:lng))
     @theaters = Scrapper.new(open(MovieFinder.new(@movie.name, res.zip).today)).to_theaters
+    render :json => @theaters.to_json
   end
 
 
