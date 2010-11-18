@@ -1,11 +1,7 @@
-<% content_for :menu do %>
-	<div data-role="navbar"> 
-		<ul> 
-			<li><a href="#">In Theaters</a></li> 
-			<li><a href="#">Near You</a></li> 
-		</ul> 
-	</div>
+<% content_for :title do %>
+  <h1>Review Umpire</h1>
 <% end %>
+
 
 <ul data-role="listview" data-filter="true">
   <% Movie.group(:released_on).select(:released_on).each do | date | %>

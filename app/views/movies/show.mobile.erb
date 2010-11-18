@@ -1,42 +1,54 @@
+<% content_for :title do %>
+<h1><%= @movie.name %></h1>
+<% end %>
+
 <style type="text/css">	
-		.feelings .ui-btn .ui-btn-inner { padding-top: 40px !important; }
-		.feelings .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
-		#hate .ui-icon { background:  url(images/hate.png) 0 0 no-repeat; background-size: 24px 22px; }
-		#love .ui-icon { background:  url(images/love.png) 0 0 no-repeat; background-size: 24px 22px; }
-		#mixed .ui-icon { background:  url(images/mixed.png) 0 0 no-repeat; background-size: 24px 22px; }
+  .feelings .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+  .feelings .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
+  #hate .ui-icon { background:  url(images/hate.png) 0 0 no-repeat; background-size: 24px 22px; }
+  #love .ui-icon { background:  url(images/love.png) 0 0 no-repeat; background-size: 24px 22px; }
+  #mixed .ui-icon { background:  url(images/mixed.png) 0 0 no-repeat; background-size: 24px 22px; }
 </style>
 
 
 
 <%= image_tag(@movie.cover_image.thumb("300x225").url)  %>
-		<table summary="This table lists all the JetBlue flights.">
-		  <tbody>
-      <% @tweets.each do | tweet | %>
-		    <tr>
-		    <td> <%= image_tag tweet.profile_image_url,:class => "ui-thumb" %></td>
-        <td><%= tweet.text %></td>
-		  </tr>
-      <% end %>
-		  </tbody>
-		</table>
-	
-<ul class="showtimes" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b" data-url='<%= closest_movie_path(@movie) %>'>
- <li data-role="list-divider">Showtimings</li>
+
+<ul class="showtimes" data-role="listview" data-inset="true" data-theme="c" data-url='<%= closest_movie_path(@movie) %>'>
+  <li data-role="list-divider">Show times</li>
 </ul>
+
+<table>
+  <tbody>
+    <% @tweets.each do | tweet | %>
+      <tr>
+        <td> <%= image_tag tweet.profile_image_url, :class => "ui-thumb" %> </td>
+        <td><%= tweet.text %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 
 <% content_for :menu do %>
-		<div data-role="navbar" class="feelings"> 
-			<ul> 
-        <li>
-          <%=  link_to "Love",  positive_movie_path(@movie),  :id => "love", "data-icon" => "custom" %>  
-        </li>
-        <li>
-          <%=  link_to "Hate",  negative_movie_path(@movie),  :id => "hate", "data-icon" => "custom" %>  
-        </li>
-        <li>
-          <%=  link_to "Mixed", mixed_movie_path(@movie),     :id => "mixed", "data-icon" => "custom" %>  
-        </li>
-			</ul> 
-		</div>
+<div data-role="navbar" data-theme="e" class="feelings">
+  <ul> 
+    <li>
+      <%= footer_link "Love", { 
+      :controller => "movies", :action => "positive" , :id => @movie.id 
+      }, { :id => "love"} %>
+    </li>
+    <li>
+      <%= footer_link "Hate", { 
+      :controller => "movies", :action => "negative" , :id => @movie.id 
+      }, { :id => "hate"} %>
+    </li>
+    <li>
+      <%= footer_link "Mixed", { 
+      :controller => "movies", :action => "mixed" , :id => @movie.id 
+      }, { :id => "mixed"} %>
+    </li>
+  </ul> 
+</div>
 <% end %>

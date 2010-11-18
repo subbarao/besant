@@ -1,12 +1,11 @@
 $(function() {
 	$('div').live('pageshow', function(page, nextPage) {
-		var showtime = $('.showtimes:visible');
+		var showtime = $(page.currentTarget).find('.showtimes');
 		if (showtime.length && !(showtime.find('li').length > 1)) {
-			var href = $(page.currentTarget).attr('id') + "/closest";
 			var success = function(position) {
 				var lat = position.coords.latitude;
 				var lng = position.coords.longitude;
-				$.getJSON(href, {
+				$.getJSON(showtime.data().url, {
 					lat: lat,
 					lng: lng
 				},
