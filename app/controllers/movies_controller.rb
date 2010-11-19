@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
 
+  geocode_ip_address
+
   before_filter :authenticate, :except => [:autocomplete, :index, :show, :positive, :negative, :mixed, :closest]
 
   #caches_page   :index, :show
@@ -33,6 +35,7 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.xml
   def show
+    puts session[:geo_location]
     @movie = Movie.find(params[:id].to_i)
     @tweets = @movie.tweets.assesed.paginate(:page => params[:page], :per_page => 21)
     respond_to do |format|
