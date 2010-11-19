@@ -22,7 +22,7 @@
   <tbody>
     <% @tweets.each do | tweet | %>
       <tr>
-        <td> <%= image_tag tweet.profile_image_url, :class => "ui-thumb" %> </td>
+      <td> <%= image_tag tweet.profile_image_url, :height => 48, :width => 48, :class => "ui-thumb" %> </td>
         <td><%= tweet.text %></td>
     </tr>
     <% end %>
