@@ -1,16 +1,6 @@
 <% content_for :title do %>
-<h1><%= @movie.name %></h1>
+  <h1><%= @movie.name %></h1>
 <% end %>
-
-<style type="text/css">	
-  .feelings .ui-btn .ui-btn-inner { padding-top: 40px !important; }
-  .feelings .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
-  #hate .ui-icon { background:  url(images/hate.png) 0 0 no-repeat; background-size: 24px 22px; }
-  #love .ui-icon { background:  url(images/love.png) 0 0 no-repeat; background-size: 24px 22px; }
-  #mixed .ui-icon { background:  url(images/mixed.png) 0 0 no-repeat; background-size: 24px 22px; }
-</style>
-
-
 
 <%= image_tag(@movie.cover_image.thumb("300x225").url)  %>
 
